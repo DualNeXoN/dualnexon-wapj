@@ -33,13 +33,13 @@ public class AuthorDAO {
 	}
 	
 	public List<Author> getAuthorsByFirstName(String firstName) {
-		TypedQuery<Author> query = em.createNamedQuery("findAuthorsByFirstName", Author.class);
+		TypedQuery<Author> query = em.createNamedQuery("getAuthorsByFirstName", Author.class);
 		query.setParameter("firstName", firstName);
 		return query.getResultList();
 	}
 	
 	public List<Author> getAuthorsByLastName(String lastName) {
-		TypedQuery<Author> query = em.createNamedQuery("findAuthorsByLastName", Author.class);
+		TypedQuery<Author> query = em.createNamedQuery("getAuthorsByLastName", Author.class);
 		query.setParameter("firstName", lastName);
 		return query.getResultList();
 	}
@@ -47,6 +47,13 @@ public class AuthorDAO {
 	public List<Author> getAllAuthors() {
 		TypedQuery<Author> query = em.createNamedQuery("getAllAuthors", Author.class);
 		return query.getResultList();
+	}
+	
+	public Author getAuthorByID(int id) {
+		TypedQuery<Author> query = em.createNamedQuery("getAuthorByID", Author.class);
+		query.setParameter("id", id);
+		if(query.getResultList().size() == 0) return null;
+		return query.getSingleResult();
 	}
 	
 }

@@ -16,8 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "findAuthorsByFirstName", query = "SELECT a FROM Author a WHERE a.firstName = :firstName"),
-	@NamedQuery(name = "findAuthorsByLastName", query = "SELECT a FROM Author a WHERE a.lastName = :lastName"),
+	@NamedQuery(name = "getAuthorsByFirstName", query = "SELECT a FROM Author a WHERE a.firstName = :firstName"),
+	@NamedQuery(name = "getAuthorsByLastName", query = "SELECT a FROM Author a WHERE a.lastName = :lastName"),
+	@NamedQuery(name = "getAuthorByID", query = "SELECT a FROM Author a WHERE a.id = :id"),
 	@NamedQuery(name = "getAllAuthors", query = "SELECT a FROM Author a")
 })
 @Table(name = "author")

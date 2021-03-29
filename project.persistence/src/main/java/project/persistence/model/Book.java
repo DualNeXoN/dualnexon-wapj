@@ -33,7 +33,7 @@ public class Book implements Serializable {
 	@Column(name = "title")
 	private String title;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(fetch = FetchType.EAGER, cascade= {CascadeType.MERGE}, optional = true)
     @JoinColumn(name = "author")
 	private Author author;
 	

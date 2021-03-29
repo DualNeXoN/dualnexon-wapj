@@ -13,7 +13,7 @@ import javax.persistence.TypedQuery;
 import project.persistence.model.Book;
 import javax.inject.Named;
 
-@Named
+@Named("validBookDAO")
 @Stateless
 public class BookDAO implements IBookDAO {
 	
