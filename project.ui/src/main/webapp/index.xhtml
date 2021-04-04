@@ -70,37 +70,89 @@
 
 		<div class="row justify-content-center" style="margin-top: 25px">
 			<div class="col-6 text-center">
-				
+
 				<h:form>
-				<h:dataTable id="datatableBooks" value="#{bookController.list}" var="book" class="table table-dark table-striped">
-				
-					<h:column>
-					
-						<f:facet name="header">Book title</f:facet>
-						
-						<h:inputText value="#{book.title}" rendered="#{book.editMode}"></h:inputText>
-						<h:outputText value="#{book.title}" rendered="#{!book.editMode}"></h:outputText>
-						 
-					</h:column>
-					
-					<h:column>
-					
-						<f:facet name="header">Edit</f:facet>
-						
-						<h:inputHidden id="bookId" value="#{book.id}" rendered="#{book.editMode}" />
-						
-						<h:commandButton value="Edit" execute="#{book.id}" rendered="#{!book.editMode}">
-							<f:ajax listener="#{bookController.editBook(book)}" render="@form"></f:ajax>
-						</h:commandButton>
-						
-						<h:commandButton value="Save" rendered="#{book.editMode}">
-							<f:ajax listener="#{bookController.saveBook(book)}" render="@form"></f:ajax>
-						</h:commandButton>
-						
-					</h:column>
-					
-				</h:dataTable>
+					<div class="row justify-content-center" style="margin-top: 25px">
+						<div class="col-6 text-center">
+							<span style="font-size: 26px"><strong>Books
+									datatable</strong></span>
+						</div>
+					</div>
+					<h:dataTable id="datatableBooks" value="#{bookController.list}"
+						var="book" class="table table-dark table-striped">
+
+						<h:column>
+
+							<f:facet name="header">Book title</f:facet>
+
+							<h:inputText value="#{book.title}" rendered="#{book.editMode}"></h:inputText>
+							<h:outputText value="#{book.title}" rendered="#{!book.editMode}"></h:outputText>
+
+						</h:column>
+
+						<h:column>
+
+							<f:facet name="header">Edit</f:facet>
+
+							<h:inputHidden id="bookId" value="#{book.id}"
+								rendered="#{book.editMode}" />
+
+							<h:commandButton value="Edit" execute="#{book.id}"
+								rendered="#{!book.editMode}">
+								<f:ajax listener="#{bookController.editBook(book)}"
+									render="@form"></f:ajax>
+							</h:commandButton>
+
+							<h:commandButton value="Save" rendered="#{book.editMode}">
+								<f:ajax listener="#{bookController.saveBook(book)}"
+									render="@form"></f:ajax>
+							</h:commandButton>
+
+						</h:column>
+
+					</h:dataTable>
 				</h:form>
+
+				<div class="row justify-content-center" style="margin-top: 25px">
+					<div class="col-6 text-center">
+						<span style="font-size: 26px"><strong>Authors
+								datatable</strong></span>
+					</div>
+				</div>
+
+				<h:dataTable id="datatableAuthors"
+					value="#{authorController.getAllAuthors()}" var="author"
+					class="table table-dark table-striped">
+
+					<h:column>
+
+						<f:facet name="header">First name</f:facet>
+						<h:outputText value="#{author.firstName}"></h:outputText>
+
+					</h:column>
+
+					<h:column>
+
+						<f:facet name="header">Last name</f:facet>
+						<h:outputText value="#{author.lastName}"></h:outputText>
+
+					</h:column>
+
+					<h:column>
+
+						<f:facet name="header">Country</f:facet>
+						<h:outputText value="#{author.country}"></h:outputText>
+
+					</h:column>
+
+					<h:column>
+
+						<f:facet name="header">Year of birth</f:facet>
+						<h:outputText value="#{author.yearOfBirth}"></h:outputText>
+
+					</h:column>
+
+				</h:dataTable>
 
 			</div>
 		</div>

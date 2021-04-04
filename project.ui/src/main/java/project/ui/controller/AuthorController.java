@@ -18,6 +18,11 @@ public class AuthorController implements Serializable {
 
 	private static final long serialVersionUID = -2682569607753961770L;
 	
+	private String firstName;
+	private String lastName;
+	private String country;
+	private Integer yearOfBirth;
+	
 	@Inject
 	private AuthorDAO authorDAO;
 	
@@ -36,6 +41,26 @@ public class AuthorController implements Serializable {
 		}
 		
 		return list;
+	}
+	
+	public List<Author> getAllAuthors() {
+		return authorDAO.getAllAuthors();
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public String getCountry() {
+		return country;
+	}
+	
+	public Integer getYearOfBirth() {
+		return yearOfBirth;
 	}
 	
 }
