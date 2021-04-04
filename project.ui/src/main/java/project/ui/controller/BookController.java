@@ -1,6 +1,8 @@
 package project.ui.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -9,6 +11,7 @@ import javax.inject.Named;
 
 import project.persistence.dao.AuthorDAO;
 import project.persistence.dao.IBookDAO;
+import project.persistence.dto.TOBook;
 import project.persistence.model.Author;
 import project.persistence.model.Book;
 
@@ -27,8 +30,12 @@ public class BookController implements Serializable {
 	@Inject
 	private AuthorDAO authorDAO;
 	
+	private List<TOBook> list = new ArrayList<TOBook>();
+	
 	@PostConstruct
-	private void init() {}
+	private void init() {
+		list = bookDAO.getAllBooksTO();
+	}
 	
 	public void addBook() {
 		
@@ -68,6 +75,23 @@ public class BookController implements Serializable {
 		int id = Integer.parseInt((authorItem).split("-")[0]);
 		if(id >= 0) return id;
 		else return -1;
+	}
+	
+	public List<TOBook> getList() {
+		return list;
+	}
+	
+	public void editBook(TOBook toBook) {
+		toBook.setEditMode(true);
+	}
+	
+	public void saveBook(TOBook toBook) {
+		toBook.setEditMode(false);
+		Book book = bookDAO.getBookById(toBook.getId());
+		if(book != null) {
+			book.setTitle(toBook.getTitle());
+			bookDAO.editBook(book);
+		}
 	}
 	
 }

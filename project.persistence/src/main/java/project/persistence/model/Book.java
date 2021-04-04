@@ -19,7 +19,8 @@ import javax.persistence.Table;
 @NamedQueries({
 	@NamedQuery(name = "findBooksByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"),
 	@NamedQuery(name = "getAllBooks", query = "SELECT b FROM Book b"),
-	@NamedQuery(name = "getBookByID", query = "SELECT b FROM Book b WHERE b.id = :id")
+	@NamedQuery(name = "getBookByID", query = "SELECT b FROM Book b WHERE b.id = :id"),
+	@NamedQuery(name = "getAllBooksTO", query = "SELECT NEW project.persistence.dto.TOBook(b) FROM Book b")
 })
 @Table(name = "book")
 public class Book implements Serializable {

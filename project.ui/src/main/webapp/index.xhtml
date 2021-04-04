@@ -22,43 +22,89 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center" style="margin-top: 25px">
 			<div class="col-6 text-center">
-				<h:form style="color: white; border: 2px solid black; background-color: gray" id="bookForm">
-				
+				<h:form
+					style="color: white; border: 2px solid black; background-color: gray"
+					id="bookForm">
+
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col text-center">
-							<span style="font-size: 26px"><strong>Add new book record</strong></span>
+							<span style="font-size: 26px"><strong>Add new
+									book record</strong></span>
 						</div>
 					</div>
-				
+
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col-5 text-end">
 							<h:outputLabel>Book name: </h:outputLabel>
 						</div>
 						<div class="col-7 text-start">
-							<h:inputText value="#{bookController.title}" id="title" style="width:200px"></h:inputText>
+							<h:inputText value="#{bookController.title}" id="title"
+								style="width:200px"></h:inputText>
 						</div>
 					</div>
-					
+
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col-5 text-end">
 							<h:outputLabel>Author: </h:outputLabel>
 						</div>
 						<div class="col-7 text-start">
-							<h:selectOneMenu value="#{bookController.authorItem}" style="width: 200px">
-            					<f:selectItems value="#{authorController.getList()}"/>
-            				</h:selectOneMenu>
+							<h:selectOneMenu value="#{bookController.authorItem}"
+								style="width: 200px">
+								<f:selectItems value="#{authorController.getList()}" />
+							</h:selectOneMenu>
 						</div>
 					</div>
-					
+
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col text-center">
-							<p:commandButton class="btn btn-success btn-outline-dark" value="Add record" style="width: 250px; font-weight: bold; color: white" actionListener="#{bookController.addBook()}"></p:commandButton>
+							<p:commandButton class="btn btn-success btn-outline-dark"
+								value="Add record"
+								style="width: 250px; font-weight: bold; color: white"
+								actionListener="#{bookController.addBook()}"></p:commandButton>
 						</div>
 					</div>
-					
+
 				</h:form>
 			</div>
 		</div>
+
+		<div class="row justify-content-center" style="margin-top: 25px">
+			<div class="col-6 text-center">
+				
+				<h:form>
+				<h:dataTable id="datatableBooks" value="#{bookController.list}" var="book" class="table table-dark table-striped">
+				
+					<h:column>
+					
+						<f:facet name="header">Book title</f:facet>
+						
+						<h:inputText value="#{book.title}" rendered="#{book.editMode}"></h:inputText>
+						<h:outputText value="#{book.title}" rendered="#{!book.editMode}"></h:outputText>
+						 
+					</h:column>
+					
+					<h:column>
+					
+						<f:facet name="header">Edit</f:facet>
+						
+						<h:inputHidden id="bookId" value="#{book.id}" rendered="#{book.editMode}" />
+						
+						<h:commandButton value="Edit" execute="#{book.id}" rendered="#{!book.editMode}">
+							<f:ajax listener="#{bookController.editBook(book)}" render="@form"></f:ajax>
+						</h:commandButton>
+						
+						<h:commandButton value="Save" rendered="#{book.editMode}">
+							<f:ajax listener="#{bookController.saveBook(book)}" render="@form"></f:ajax>
+						</h:commandButton>
+						
+					</h:column>
+					
+				</h:dataTable>
+				</h:form>
+
+			</div>
+		</div>
+
 	</div>
 
 </h:body>

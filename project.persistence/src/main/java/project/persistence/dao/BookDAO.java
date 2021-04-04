@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import project.persistence.dto.TOBook;
 import project.persistence.model.Book;
 import javax.inject.Named;
 
@@ -44,8 +45,7 @@ public class BookDAO implements IBookDAO {
 
 	@Override
 	public Book editBook(Book book) {
-		// Ospravedlnujem sa, ale neviem, co je momentalne myslene pod akciou "edit". (kod doplnim neskor)
-		// TODO Doplnit editBook logiku
+		em.merge(book);
 		return null;
 	}
 
@@ -72,6 +72,12 @@ public class BookDAO implements IBookDAO {
 	@Override
 	public List<Book> getAllBooks() {
 		TypedQuery<Book> query = em.createNamedQuery("getAllBooks", Book.class);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<TOBook> getAllBooksTO() {
+		TypedQuery<TOBook> query = em.createNamedQuery("getAllBooksTO", TOBook.class);
 		return query.getResultList();
 	}
 	
