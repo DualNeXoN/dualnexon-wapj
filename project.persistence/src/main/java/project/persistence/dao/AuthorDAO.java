@@ -56,4 +56,9 @@ public class AuthorDAO {
 		return query.getSingleResult();
 	}
 	
+	public void deleteAuthor(Author author) {
+		System.out.println("Mazem instanciu");
+		em.remove(em.contains(author) ? author : em.merge(author));
+	}
+	
 }

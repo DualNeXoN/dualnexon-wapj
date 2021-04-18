@@ -44,7 +44,7 @@ public class FakeBookDAO implements IBookDAO {
 	@Override
 	public Book editBook(Book book) {
 		em.merge(book);
-		return null;
+		return book;
 	}
 
 	@Override

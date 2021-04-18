@@ -46,13 +46,13 @@ public class BookDAO implements IBookDAO {
 	@Override
 	public Book editBook(Book book) {
 		em.merge(book);
-		return null;
+		return book;
 	}
 
 	@Override
 	public void deleteBook(Book book) {
 		System.out.println("Mazem instanciu");
-		em.remove(book);
+		em.remove(em.contains(book) ? book : em.merge(book));
 	}
 
 	@Override

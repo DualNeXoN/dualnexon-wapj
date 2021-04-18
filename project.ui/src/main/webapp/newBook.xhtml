@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/layout.xhtml">
+
+	<ui:define name="header">
+
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<div class="row justify-content-center" style="margin-top: 25px">
+			<div class="col-6 text-center">
+				<div class="row justify-content-center" style="margin-top: 25px">
+					<div class="col-6 text-center">
+						<h:form>
+							<h:commandButton value="Main Page" action="#{newBookController.mainPage}"/>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row justify-content-center" style="margin-top: 25px">
+			<div class="col-6 text-center">
+				<h:form
+					style="color: white; border: 2px solid black; background-color: gray"
+					id="newBookForm">
+
+					<div class="row justify-content-center" style="margin: 15px 0">
+						<div class="col text-center">
+							<span style="font-size: 26px"><strong>Add new
+									book record</strong></span>
+						</div>
+					</div>
+
+					<div class="row justify-content-center" style="margin: 15px 0">
+						<div class="col-5 text-end">
+							<h:outputLabel>Book name: </h:outputLabel>
+						</div>
+						<div class="col-7 text-start">
+							<h:inputText value="#{newBookController.title}"
+								id="title" style="width:200px">
+								<f:validateLength for="title" minimum="3" />
+							</h:inputText>
+						</div>
+					</div>
+
+					<div class="row justify-content-center" style="margin: 15px 0">
+						<div class="col-5 text-end">
+							<h:outputLabel>Author: </h:outputLabel>
+						</div>
+						<div class="col-7 text-start">
+							<h:selectOneMenu value="#{newBookController.authorItem}"
+								style="width: 200px">
+								<f:selectItems value="#{authorController.getList()}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="row justify-content-center" style="margin: 15px 0">
+						<div class="col text-center">
+							<p:commandButton class="btn btn-success btn-outline-dark"
+								value="Add record"
+								style="width: 250px; font-weight: bold; color: white"
+								actionListener="#{newBookController.addBook()}"></p:commandButton>
+						</div>
+					</div>
+
+					<div class="row justify-content-center" style="margin: 15px 0">
+						<div class="col text-center">
+							<h:messages style="color:red; margin:8px" />
+						</div>
+					</div>
+
+				</h:form>
+
+			</div>
+		</div>
+
+	</ui:define>
+
+	<ui:define name="footer">
+	</ui:define>
+
+</ui:composition>
+</html>

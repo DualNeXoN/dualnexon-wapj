@@ -17,16 +17,11 @@
 
 
 	<dependencies>
-		<dependency>
-			<groupId>org.highfaces</groupId>
-			<artifactId>highfaces</artifactId>
-			<version>1.1</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.3</version>
+			<version>10.0.0</version>
 		</dependency>
 
 
