@@ -7,4 +7,16 @@
 			<process-as>xhtml</process-as>
 		</facelets-processing>
 	</faces-config-extension>
+	
+	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>sk</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>translations.lang</base-name>
+			<var>lang</var>
+		</resource-bundle>
+	</application>
+	
 </faces-config>

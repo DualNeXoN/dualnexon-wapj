@@ -19,15 +19,15 @@
 
 			<div class="row justify-content-center" style="margin-top: 25px">
 			
-				<div class="col-1 text-center">
+				<div class="col-2 text-center">
 					<h:form>
-						<h:commandButton value="Add new Book" action="#{bookController.newBook}" />
+						<h:commandButton value="#{lang['btn.addnewbook']}" action="#{bookController.newBook}" />
 					</h:form>
 				</div>
 				
-				<div class="col-1 text-center">
+				<div class="col-2 text-center">
 					<h:form>
-						<h:commandButton value="Add new Author" action="#{authorController.newAuthor}" />
+						<h:commandButton value="#{lang['btn.addnewauthor']}" action="#{authorController.newAuthor}" />
 					</h:form>
 				</div>
 				
@@ -39,8 +39,7 @@
 					<h:form>
 						<div class="row justify-content-center" style="margin-top: 25px">
 							<div class="col-6 text-center">
-								<span style="font-size: 26px"><strong>Books
-										datatable</strong></span>
+								<span style="font-size: 26px"><strong>#{lang['label.booksdatatable']}</strong></span>
 							</div>
 						</div>
 						<h:dataTable id="datatableBooks" value="#{bookController.list}"
@@ -48,7 +47,7 @@
 
 							<h:column>
 
-								<f:facet name="header">Book title</f:facet>
+								<f:facet name="header">#{lang['label.booksdatatable.title']}</f:facet>
 
 								<h:inputText value="#{book.title}" rendered="#{book.editMode}"></h:inputText>
 								<h:outputText value="#{book.title}" rendered="#{!book.editMode}"></h:outputText>
@@ -57,12 +56,12 @@
 
 							<h:column>
 
-								<f:facet name="header">Edit</f:facet>
+								<f:facet name="header">#{lang['label.booksdatatable.edit']}</f:facet>
 
 								<h:inputHidden id="bookId" value="#{book.id}"
 									rendered="#{book.editMode}" />
 
-								<h:commandButton value="Edit" execute="#{book.id}"
+								<h:commandButton value="#{lang['label.booksdatatable.edit']}" execute="#{book.id}"
 									rendered="#{!book.editMode}">
 									<f:ajax listener="#{bookController.editBook(book)}"
 										render="@form"></f:ajax>
@@ -75,8 +74,8 @@
 
 							<h:column>
 
-								<f:facet name="header">Delete</f:facet>
-								<p:commandButton value="Delete"
+								<f:facet name="header">#{lang['label.booksdatatable.delete']}</f:facet>
+								<p:commandButton value="#{lang['label.booksdatatable.delete']}"
 									actionListener="#{bookController.deleteBook(book)}"></p:commandButton>
 
 							</h:column>
@@ -86,8 +85,7 @@
 
 					<div class="row justify-content-center" style="margin-top: 25px">
 						<div class="col-6 text-center">
-							<span style="font-size: 26px"><strong>Authors
-									datatable</strong></span>
+							<span style="font-size: 26px"><strong>#{lang['label.authorsdatatable']}</strong></span>
 						</div>
 					</div>
 
@@ -97,36 +95,36 @@
 
 						<h:column>
 
-							<f:facet name="header">First name</f:facet>
+							<f:facet name="header">#{lang['label.authorsdatatable.firstname']}</f:facet>
 							<h:outputText value="#{author.firstName}"></h:outputText>
 
 						</h:column>
 
 						<h:column>
 
-							<f:facet name="header">Last name</f:facet>
+							<f:facet name="header">#{lang['label.authorsdatatable.lastname']}</f:facet>
 							<h:outputText value="#{author.lastName}"></h:outputText>
 
 						</h:column>
 
 						<h:column>
 
-							<f:facet name="header">Country</f:facet>
+							<f:facet name="header">#{lang['label.authorsdatatable.country']}</f:facet>
 							<h:outputText value="#{author.country}"></h:outputText>
 
 						</h:column>
 
 						<h:column>
 
-							<f:facet name="header">Year of birth</f:facet>
+							<f:facet name="header">#{lang['label.authorsdatatable.yearofbirth']}</f:facet>
 							<h:outputText value="#{author.yearOfBirth}"></h:outputText>
 
 						</h:column>
 
 						<h:column>
 
-							<f:facet name="header">Delete</f:facet>
-							<p:commandButton value="Delete"
+							<f:facet name="header">#{lang['label.authorsdatatable.delete']}</f:facet>
+							<p:commandButton value="#{lang['label.authorsdatatable.delete']}"
 								actionListener="#{authorController.deleteAuthor(author)}"></p:commandButton>
 
 						</h:column>

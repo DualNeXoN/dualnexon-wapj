@@ -20,7 +20,7 @@
 				<div class="row justify-content-center" style="margin-top: 25px">
 					<div class="col-6 text-center">
 						<h:form>
-							<h:commandButton value="Main Page" action="#{newAuthorController.mainPage}"/>
+							<h:commandButton value="#{lang['btn.mainpage']}" action="#{newAuthorController.mainPage}"/>
 						</h:form>
 					</div>
 				</div>
@@ -35,14 +35,13 @@
 
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col text-center">
-							<span style="font-size: 26px"><strong>Add new
-									author record</strong></span>
+							<span style="font-size: 26px"><strong>#{lang['label.addnewauthor']}</strong></span>
 						</div>
 					</div>
 
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col-5 text-end">
-							<h:outputLabel>First name: </h:outputLabel>
+							<h:outputLabel>#{lang['label.addnewauthor.firstname']}: </h:outputLabel>
 						</div>
 						<div class="col-7 text-start">
 							<h:inputText value="#{newAuthorController.firstName}"
@@ -53,7 +52,7 @@
 					
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col-5 text-end">
-							<h:outputLabel>Last name: </h:outputLabel>
+							<h:outputLabel>#{lang['label.addnewauthor.lastname']}: </h:outputLabel>
 						</div>
 						<div class="col-7 text-start">
 							<h:inputText value="#{newAuthorController.lastName}"
@@ -64,7 +63,7 @@
 					
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col-5 text-end">
-							<h:outputLabel>Year of birth: </h:outputLabel>
+							<h:outputLabel>#{lang['label.addnewauthor.yearofbirth']}: </h:outputLabel>
 						</div>
 						<div class="col-7 text-start">
 							<p:inputNumber required="true" value="#{newAuthorController.yearOfBirth}"
@@ -75,7 +74,7 @@
 					<div class="row justify-content-center" style="margin: 15px 0">
 						<div class="col text-center">
 							<p:commandButton class="btn btn-success btn-outline-dark"
-								value="Add record"
+								value="#{lang['btn.addrecord']}"
 								style="width: 250px; font-weight: bold; color: white"
 								actionListener="#{newAuthorController.addAuthor()}"></p:commandButton>
 						</div>
